@@ -1,5 +1,5 @@
 <script setup>
-import DropDown from '../ui/sidebat/DropDown.vue';
+import DropDown from '../ui/sidebar/DropDown.vue';
 
 </script>
 
