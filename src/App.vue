@@ -26,6 +26,7 @@ import { ref } from 'vue';
 import HeaderComp from './components/general/HeaderComp.vue';
 import Sidebar from './components/general/Sidebar.vue';
 import ProductCard from './components/ProductCard.vue';
+import Loader from './components/general/Loader.vue';
 
 const productsRef = ref([
   {
