@@ -11,7 +11,10 @@
    </button>
    <div v-if="showBasketState" class=" absolute rounded-lg shadow  bg-white  w-[550px] right-0 top-full ">
      <span class="w-full flex items-center py-3 justify-center font-bold text-xl">Ваша корзина</span>
-     <div class="rounded-lg w-full">
+    <div v-if="itemsInBasket.length == 0" class=" flex w-full items-center justify-center">
+        <span>Тут ничег онет</span>
+    </div>
+     <div v-if="itemsInBasket.length >0" class="rounded-lg w-full">
         <div class="p-2 grid grid-cols-[40%_1fr_1fr_35px] w-full gap-1">
             <span class="flex w-full justify-center">Название</span>
             <span class="flex w-full justify-center">Количество</span>
@@ -68,10 +71,11 @@
         </div>
      </div>
 
-        <div class="p-2 flex flex-row justify-between border-t-emerald-100 w-full">
+        <div v-if="itemsInBasket.length >0" class="p-2 flex flex-row justify-between border-t-emerald-100 w-full">
             <div class="flex flex-col gap-2">
                 <span>ItemsInBasket:100</span>
                 <span> totalCost: 500$ </span>
+                
             </div>  
             <button class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">cleanBasket</button>
         </div>
@@ -86,6 +90,8 @@
         showBasketState.value=!showBasketState.value
     }
 
+
+    const itemsInBasket = ref([])
 
 
 
