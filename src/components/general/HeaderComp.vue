@@ -1,5 +1,6 @@
 <script setup>
 import HeaderBasket from '../HeaderBasket.vue';
+import ButtonWhite from '../ui/buttons/ButtonWhite.vue';
 
 </script>
 
@@ -19,7 +20,8 @@ import HeaderBasket from '../HeaderBasket.vue';
       </div>
       <div class=" flex flex-row gap-2">
         <HeaderBasket/>
-        <button class="py-2.5 px-5 me-2 mb-2 text-sm font-bold text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 ">LogOut</button>
+        <ButtonWhite
+        title="LogOut"/>
       </div>
       
     </div>

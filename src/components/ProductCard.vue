@@ -13,7 +13,8 @@
             </div>
           <div class="mt-4 flex items-center justify-between gap-4">
             <p class="text-2xl font-extrabold leading-tight text-gray-900 dark:text-white">${{ product.price }}</p>
-            <ButtonEl/>
+            <ButtonEl
+            title="В корзину"/>
           </div>
         </div>
       </div>
