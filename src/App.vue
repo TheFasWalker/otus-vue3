@@ -39,7 +39,7 @@ const error = ref('')
 
 onMounted(async ()=>{
   try{
-    const response = await fetch('https://fakestoreapi.com/products')
+    const response = await fetch('https://fakestoreapi.com/products1')
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({ message: `HTTP error! status: ${response.status}` }));
@@ -48,9 +48,9 @@ onMounted(async ()=>{
 
     productsRef.value = await response.json();
     loading.value = false
-  }catch{
-    error.value = err;
-    console.error('Error fetching data:', err);
+  }catch(e){
+    error.value = e;
+    console.error('Error fetching data:', e);
     loading.value = false
   }
 })
