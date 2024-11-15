@@ -6,12 +6,12 @@
           </a>
         </div>
         <div class="pt-6">
-          <a href="#" class="text-lg font-semibold leading-tight text-gray-900 hover:underline dark:text-white">{{ product.title }}</a>
+          <a href="#" class="text-lg font-semibold leading-tight text-gray-900 hover:underline dark:text-white max-h-11 overflow-hidden block">{{ product.title }}</a>
 
           <Raiting
           :raiting="props.product.rating.rate"
           :count="props.product.rating.count"/>
-            <div class="pt-5">
+            <div class="pt-5 h-52 overflow-y-clip">
               <p class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ product.description }}</p>
             </div>
           <div class="mt-4 flex items-center justify-between gap-4">
