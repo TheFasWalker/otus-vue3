@@ -39,7 +39,7 @@ const error = ref('')
 
 onMounted(async ()=>{
   try{
-    const response = await fetch('https://fakestoreapi.com/products1')
+    const response = await fetch('https://fakestoreapi.com/products')
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({ message: `HTTP error! status: ${response.status}` }));

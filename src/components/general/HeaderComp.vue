@@ -1,5 +1,5 @@
 <script setup>
-import HeaderBasket from '../HeaderBasket.vue';
+import HeaderBasket from '../headerBasket/HeaderBasket.vue';
 import ButtonWhite from '../ui/buttons/ButtonWhite.vue';
 
 </script>
