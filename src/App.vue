@@ -11,7 +11,7 @@
           
         </div>
           <div v-if="productsRef.length" class="mb-4 grid gap-4 sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4">
-            <ProductCard v-for="product in productsRef" :key="product.id" />
+            <ProductCard v-for="product in productsRef" :key="product.id" :product="product"/>
           </div>
           <div v-if="productsRef.length" class="w-full text-center">
             <ButtonWhite
