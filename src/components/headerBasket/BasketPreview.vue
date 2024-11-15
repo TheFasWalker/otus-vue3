@@ -1,13 +1,21 @@
 <template>
             <div class="  w-full max-h-14 p-2 grid grid-cols-[40%_1fr_1fr_35px] gap-1">
-                <span>товар номер один</span>
+                <span>{{ props.title }}</span>
                 <div class=" flex flex-row gap-1 justify-around">
-                    <button class=" h-6 w-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-sm border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">-</button>
-                    <input class=" h-6 w-10 text-sm px-1" type="number" value="11">
-                    <button class=" h-6 w-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-sm border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">+</button>
+                    <button 
+                        class=" h-6 w-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-sm border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+                        @click="decrementCount"
+                    >-</button>
+                    <input class=" h-6 w-10 text-sm px-1" type="number" v-model="count">
+                    <button
+                        class=" h-6 w-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-sm border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+                        @click="incrementCount"
+                     >+</button>
                 </div>
-                <span class="flex items-center justify-center">500 денег</span>
-                <button class=" w-fit h-fit text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
+                <span class="flex items-center justify-center">{{ count * props.price }} $</span>
+                <button 
+                class=" w-fit h-fit text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+                >
                     <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/>
                     </svg>
@@ -16,5 +24,20 @@
            </div>
 </template>
 <script setup >
+import { ref} from 'vue';
+    const props = defineProps(['title', 'price','count'])
+    console.log(props.count)
+    const count = ref(props.count)
+    const emit = defineEmits(['update:count'])
+    const incrementCount = () => {
+        count.value++;
+        emit('update:count', count.value);
+    };
+    const decrementCount = () => {
+        if (count.value > 0) {
+            count.value--;
+            emit('update:count', count.value);
+        }
+    };
     
 </script>

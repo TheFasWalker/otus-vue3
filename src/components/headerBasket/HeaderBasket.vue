@@ -22,23 +22,14 @@
             <span class="flex w-full justify-center">Цена</span>
         </div>
         <div class=" p-2 max-h-48 overflow-y-auto flex flex-col gap-1">
-                <span>товар номер один</span>
-                <div class=" flex flex-row gap-1 justify-around">
-                    <button class=" h-6 w-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-sm border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">-</button>
-                    <input class=" h-6 w-10 text-sm px-1" type="number" value="11">
-                    <button class=" h-6 w-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-sm border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">+</button>
-                </div>
-                <span class="flex items-center justify-center">500 денег</span>
-                <button class=" w-fit h-fit text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
-                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/>
-                    </svg>
-                </button>
 
-           </div> -->
-           <BasketPreview/>
-           <BasketPreview/>
-           <BasketPreview/>
+           <BasketPreview 
+                v-for="item in itemsInBasket" 
+                    :title="item.title"
+                    :count="item.count"
+                    :price="item.price"
+            />
+
 
 
 
@@ -70,7 +61,21 @@ import BasketPreview from './BasketPreview.vue';
 
 
     const itemsInBasket = ref([
-        {name:'шмотка 1',
+        {
+            id:'1',
+            title:'шмотка 1',
+            price:500,
+            count:1
+        },
+        {
+            id:'2',
+            title:'шмотка 2',
+            price:500,
+            count:1
+        },
+        {
+            id:'3',
+            title:'шмотка 3',
             price:500,
             count:1
         }
