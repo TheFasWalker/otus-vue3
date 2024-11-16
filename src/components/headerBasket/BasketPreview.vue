@@ -14,6 +14,7 @@
                 </div>
                 <span class="flex items-center justify-center">{{ count * props.price }} $</span>
                 <button 
+                @click="$emit('delete-item')"
                 class=" w-fit h-fit text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
                 >
                     <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -25,18 +26,20 @@
 </template>
 <script setup >
 import { ref} from 'vue';
-    const props = defineProps(['title', 'price','count'])
+    const props = defineProps(['title', 'price','count','id'])
     const count = ref(props.count)
-    const emit = defineEmits(['update:count'])
+    const emit = defineEmits()
     const incrementCount = () => {
         count.value++;
-        emit('update:count', count.value);
+        emit('update-count', {newCoutn:count.value, id:props.id});
     };
     const decrementCount = () => {
-        if (count.value > 0) {
+        if (count.value > 1) {
             count.value--;
-            emit('update:count', count.value);
-        }
+            emit('update-count', {newCoutn:count.value, id:props.id});
+        }else(
+            emit('delete-item')
+        )
     };
     
 </script>

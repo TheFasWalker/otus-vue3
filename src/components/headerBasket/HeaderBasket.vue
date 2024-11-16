@@ -25,9 +25,12 @@
 
            <BasketPreview 
                 v-for="item in itemsInBasket" 
+                    @update-count="updateCount($event)"
+                    @delete-item="deleteItem(item.id)"
                     :title="item.title"
                     :count="item.count"
                     :price="item.price"
+                    :id="item.id"
             />
 
 
@@ -50,12 +53,12 @@
 </div>
 </template>
 <script setup>
-    import {computed, ref} from 'vue'
+    import {computed, reactive, ref} from 'vue'
 import ButtonWhite from '../ui/buttons/ButtonWhite.vue';
 import BasketPreview from './BasketPreview.vue';
     const totalCount = computed(()=>{
             let itemsCount = 0
-            itemsInBasket.value.forEach(element => {
+            itemsInBasket.forEach(element => {
                 itemsCount = itemsCount + element.count
             });
             return itemsCount
@@ -66,7 +69,7 @@ import BasketPreview from './BasketPreview.vue';
         }
         const totalCost = computed(()=>{
             let totalCostItem =0
-            itemsInBasket.value.forEach(element=>{
+            itemsInBasket.forEach(element=>{
                 
                 totalCostItem = totalCostItem + (element.count * element.price)
                 console.log(element.count * element.price)
@@ -74,8 +77,7 @@ import BasketPreview from './BasketPreview.vue';
             return totalCostItem
         })
 
-
-    const itemsInBasket = ref([
+    const itemsInBasket = reactive([
         {
             id:'1',
             title:'шмотка 1',
@@ -95,7 +97,16 @@ import BasketPreview from './BasketPreview.vue';
             count:1
         }
     ])
+    function deleteItem(elemId){
+        const index = itemsInBasket.findIndex((elem)=>elem.id == elemId)
+        itemsInBasket.splice(index, 1)
+        console.log('deleting')
 
+    }
+        function updateCount(event){
+                const changingItem =  itemsInBasket.find((item)=>item.id == event.id)
+                changingItem.count = event.newCoutn
+        }
 
 
 
