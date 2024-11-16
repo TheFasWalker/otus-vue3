@@ -6,7 +6,11 @@
                         class=" h-6 w-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-sm border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
                         @click="decrementCount"
                     >-</button>
-                    <input class=" h-6 w-10 text-sm px-1" type="number" v-model="count">
+                    <input class=" h-6 w-10 text-sm px-1" 
+                        type="number" 
+                        v-model="count" 
+                        @keyup.enter="updateCountData"
+                        @blur="updateCountData">
                     <button
                         class=" h-6 w-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-sm border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
                         @click="incrementCount"
@@ -29,6 +33,10 @@ import { ref} from 'vue';
     const props = defineProps(['title', 'price','count','id'])
     const count = ref(props.count)
     const emit = defineEmits()
+    const updateCountData=()=> {
+        emit('update-count',{newCoutn:count, id:props.id})
+    }
+
     const incrementCount = () => {
         count.value++;
         emit('update-count', {newCoutn:count.value, id:props.id});
