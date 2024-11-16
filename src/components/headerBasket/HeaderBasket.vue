@@ -39,8 +39,8 @@
 
         <div v-if="itemsInBasket.length >0" class="p-2 flex flex-row justify-between border-t-emerald-100 w-full">
             <div class="flex flex-col gap-2">
-                <span>ItemsInBasket:100</span>
-                <span> totalCost: 500$ </span>
+                <span>ItemsInBasket:{{ totalCount }}</span>
+                <span> totalCost: {{totalCost}}$ </span>
                 
             </div>  
             <ButtonWhite
@@ -50,14 +50,29 @@
 </div>
 </template>
 <script setup>
-    import {ref} from 'vue'
+    import {computed, ref} from 'vue'
 import ButtonWhite from '../ui/buttons/ButtonWhite.vue';
 import BasketPreview from './BasketPreview.vue';
-
-    const showBasketState =ref(false)
-    const toggleBasket=()=>{
-        showBasketState.value=!showBasketState.value
-    }
+    const totalCount = computed(()=>{
+            let itemsCount = 0
+            itemsInBasket.value.forEach(element => {
+                itemsCount = itemsCount + element.count
+            });
+            return itemsCount
+        })
+        const showBasketState =ref(false)
+        const toggleBasket=()=>{
+            showBasketState.value=!showBasketState.value
+        }
+        const totalCost = computed(()=>{
+            let totalCostItem =0
+            itemsInBasket.value.forEach(element=>{
+                
+                totalCostItem = totalCostItem + (element.count * element.price)
+                console.log(element.count * element.price)
+            })
+            return totalCostItem
+        })
 
 
     const itemsInBasket = ref([
@@ -85,13 +100,3 @@ import BasketPreview from './BasketPreview.vue';
 
 
 </script>
-<style lang="css" scoped>
-    input[type="number"] {
-    -moz-appearance: textfield;
-    }
-    input[type="number"]::-webkit-inner-spin-button, 
-    input[type="number"]::-webkit-outer-spin-button { 
-        -webkit-appearance: none; 
-        margin: 0; 
-    }
-</style>

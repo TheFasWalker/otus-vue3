@@ -26,7 +26,6 @@
 <script setup >
 import { ref} from 'vue';
     const props = defineProps(['title', 'price','count'])
-    console.log(props.count)
     const count = ref(props.count)
     const emit = defineEmits(['update:count'])
     const incrementCount = () => {
@@ -41,3 +40,13 @@ import { ref} from 'vue';
     };
     
 </script>
+<style lang="css" scoped>
+    input[type="number"] {
+    -moz-appearance: textfield;
+    }
+    input[type="number"]::-webkit-inner-spin-button, 
+    input[type="number"]::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0; 
+    }
+</style>
