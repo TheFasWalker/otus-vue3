@@ -48,6 +48,7 @@
                 
             </div>  
             <ButtonWhite
+            @click="clearBasket"
             title="cleanBasket"/>
         </div>
     </div>
@@ -108,6 +109,9 @@ import BasketPreview from './BasketPreview.vue';
                 const changingItem =  itemsInBasket.find((item)=>item.id == event.id)
                 changingItem.count = event.newCoutn
         }
+    function clearBasket(){
+        itemsInBasket.splice(0,itemsInBasket.length)
+    }
 
 
 
