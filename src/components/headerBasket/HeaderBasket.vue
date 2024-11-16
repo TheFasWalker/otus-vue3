@@ -31,6 +31,7 @@
                     :count="item.count"
                     :price="item.price"
                     :id="item.id"
+                    :key="item.id"
             />
 
 
