@@ -66,12 +66,11 @@
     </div>
 </template>
 <script setup>
-import { ref } from 'vue';
+  import { ref } from 'vue';
 
-const dropdownState = ref(false)
-const toggleDropDown = ()=>{
-    console.log('toggle')
-    dropdownState.value= !dropdownState.value
-}
+  const dropdownState = ref(false)
+  const toggleDropDown = ()=>{
+      dropdownState.value= !dropdownState.value
+  }
 </script>
 <style></style>

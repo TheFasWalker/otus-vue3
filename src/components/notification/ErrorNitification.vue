@@ -23,10 +23,9 @@
 </div>
 </template>
 <script setup>
-const emit = defineEmits()
-const props = defineProps(['title'])
-function closeNotofication() {
-    console.log('asdaa')
-    emit('close-notification',false)
-}
+    const emit = defineEmits()
+    const props = defineProps(['title'])
+    function closeNotofication() {
+        emit('close-notification',false)
+    }
 </script>
