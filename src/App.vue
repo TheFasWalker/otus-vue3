@@ -1,7 +1,5 @@
 <template>
-  <div class="antialiased bg-gray-50 dark:bg-gray-900">
-    <HeaderComp />
-    <Sidebar />
+  <MainLayout>
     <Loader v-if="loading"/>
     <Error 
       @close-notification = "errorState = $event"
@@ -27,13 +25,12 @@
 
       </section>
     </main>
-  </div>
+  </MainLayout>
 </template>
 <script setup>
 import { ref,onMounted } from 'vue';
-import HeaderComp from './components/general/HeaderComp.vue';
-import Sidebar from './components/general/Sidebar.vue';
 import ProductCard from './components/ProductCard.vue';
+import MainLayout from './components/general/Lauouts/MainLayout.vue';
 import Loader from './components/general/Loader.vue';
 import ButtonWhite from './components/ui/buttons/ButtonWhite.vue';
 import Error from './components/notification/ErrorNitification.vue'
