@@ -1,4 +1,5 @@
 <script setup>
+import Search from '../Forms/Search.vue';
 import HeaderBasket from '../headerBasket/HeaderBasket.vue';
 import ButtonWhite from '../ui/buttons/ButtonWhite.vue';
 
@@ -17,6 +18,7 @@ import ButtonWhite from '../ui/buttons/ButtonWhite.vue';
           />
           <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
         </a>
+        <Search/>
       </div>
       <div class=" flex flex-row gap-2">
         <HeaderBasket/>
