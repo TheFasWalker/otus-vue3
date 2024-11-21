@@ -4,9 +4,9 @@
     @click="missclick"
         ref="popupContainer"
         class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full bg-[#0000026c] flex ">
-        <div class="relative  w-full max-w-xl h-full md:h-auto bg-white">
+        <div class="relative  w-full max-w-xl h-full md:h-auto bg-white rounded-lg">
 
-            <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800  pt-14">
+            <div class="relative p-4 bg-white rounded-lg shadow  pt-14">
                 <button 
                     type="button"
                     class=" absolute top-3 right-3 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 inline-flex dark:hover:bg-gray-600 dark:hover:text-white"
