@@ -35,7 +35,15 @@
             title="Описание"
             name="description"
             placeholder="описание"
-            v-model.trim="formData.textArea"/>
+            v-model.trim="formData.textArea"
+            />
+            <Checkbox
+                title="Чекбокс"
+                name="checkbox"
+                v-model="formData.activiy"
+            />
+            {{ formData.activiy }}
+
         <ButtonEl
             title="Добавить товар"
             @click='console.log(formData)'
@@ -53,13 +61,15 @@ import InputComp from '../../ui/formItems/InputComp.vue';
 import ButtonEl from '../../ui/ButtonEl.vue';
 import TextAreaComp from '../../ui/formItems/TextAreaComp.vue';
 import DropDownSelect from '../../ui/formItems/DropDownSelect.vue';
+import Checkbox from '../../ui/formItems/Checkbox.vue';
 const popupState = ref(true)
 
 const formData = reactive({
     itemName:'',
     textArea:'',
     itemsCount:0,
-    sity:''
+    sity:'',
+    activiy:false
 })
 const dropDownData = ref([
     {title:'Россия',
