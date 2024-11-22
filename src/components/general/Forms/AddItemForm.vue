@@ -7,15 +7,20 @@
     v-if="popupState"
     @close-popup="popupState = !popupState"
     >
-    <form class="flex flex-col gap-5">
-        <h1 class="bg-gray-50  text-gray-900 text-xl ">Добавить товар</h1>
+    <form class="flex flex-col gap-5 items-center w-full">
+        <h1 class="  text-gray-900 text-xl ">Добавить товар</h1>
         <InputComp
             title="title"
             type="text"
             palaceholder="placeholder"
             v-model="inputText"
             name="title"
-            />
+            />    
+            <TextAreaComp
+            title="Описание"
+            name="description"
+            placeholder="описание"
+            v-model="textArea"/>
         <ButtonEl
             title="Добавить товар"
         />
@@ -28,10 +33,12 @@
 import { ref } from 'vue';
 import ButtonWhite from '../../ui/buttons/ButtonWhite.vue';
 import PopupLauout from '../Lauouts/PopupLauout.vue';
-import InputComp from '../../ui/InputComp.vue';
+import InputComp from '../../ui/formItems/InputComp.vue';
 import ButtonEl from '../../ui/ButtonEl.vue';
-const popupState = ref(false)
+import TextAreaComp from '../../ui/formItems/TextAreaComp.vue';
+const popupState = ref(true)
 
 const inputText = ref('inputText')
+const textArea= ref('textArea')
 
 </script>
