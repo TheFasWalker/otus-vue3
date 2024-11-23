@@ -15,6 +15,7 @@
             palaceholder="placeholder"
             v-model.trim="formData.itemName"
             name="itemName"
+            error=""
             />    
             <InputComp
             title="Количество"
@@ -22,6 +23,7 @@
             palaceholder="itemsCount"
             v-model.trim="formData.itemsCount"
             name="itemName"
+            error=""
             /> 
 
             <DropDownSelect
@@ -29,6 +31,7 @@
             name="sity"
             :dataElems="dropDownData"
             v-model="formData.sity"
+            error=""
             />
 
             <TextAreaComp
@@ -36,13 +39,13 @@
             name="description"
             placeholder="описание"
             v-model.trim="formData.textArea"
+            error=""
             />
             <Checkbox
                 title="Чекбокс"
                 name="checkbox"
                 v-model="formData.activiy"
             />
-            {{ formData.activiy }}
 
         <ButtonEl
             title="Добавить товар"
