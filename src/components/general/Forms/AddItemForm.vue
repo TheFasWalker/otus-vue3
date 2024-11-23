@@ -1,11 +1,11 @@
 <template>
     <ButtonWhite
     title="Добавить товар"
-    @click="popupState = !popupState"/>
+    @click="popupState = true"/>
 
     <PopupLauout 
     v-if="popupState"
-    @close-popup="popupState = !popupState"
+    @close-popup="closePopup"
     >
     <Loader v-if="loading"/>
     <div class="" v-if="!errorData">
@@ -106,7 +106,7 @@ const schema = toTypedSchema(yup.object({
     description:yup.string().nullable(),
     activity: yup.mixed().oneOf([true, false, null, undefined]),
 }))
-const {errors,defineField, handleSubmit}=useForm({
+const {errors,defineField, handleSubmit,resetForm}=useForm({
     validationSchema:schema,
     validateOnInput:true, 
     validateOnChange:true,
@@ -118,7 +118,16 @@ const [sity, sityAttrs]= defineField('sity')
 const [description, descriptionAttrs]= defineField('description')
 const [activity, activityAttrs]= defineField('activity')
 
-
+const closePopup=()=>{
+    popupState.value = false
+    if(formSendedSucsess.value){
+        resetForm();
+        loading.value=false
+        formSendedSucsess.value = false
+        errorData.value = ''
+        loading.value=false
+    }
+}
 
 const formSubmit = handleSubmit(async(values)=>{
     try{
