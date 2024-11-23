@@ -7,5 +7,5 @@
 </template>
 <script setup>
     import HeaderComp from '../HeaderComp.vue';
-    import Sidebar from '../Sidebar.vue';
+    import Sidebar from '../sidebar/Sidebar.vue';
 </script>
