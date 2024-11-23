@@ -17,6 +17,7 @@
         :value="props.modelValue"
         :name="props.name"
         @input="$emit('update:modelValue',$event.target.value)"
+        @blur="$emit('blur', props.modelValue)"
         >
 
     </label>

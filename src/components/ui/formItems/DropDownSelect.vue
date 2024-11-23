@@ -9,6 +9,7 @@
     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full  p-2.5 "
     :class="{ 'border-red-600': error }"
     :name=name 
+    @blur="$emit('blur', modelValue)"
     @input="$emit('update:modelValue',$event.target.value)"
     >
         <option 
@@ -26,7 +27,6 @@
         </option>
     </select>
 </label>
-{{ modelValue }}
 </template>
 <script setup>
 
