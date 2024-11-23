@@ -115,8 +115,8 @@ const {errors,defineField, handleSubmit}=useForm({
 const [itemName, itemNameAttrs]= defineField('itemName')
 const [itemsCount, itemsCountAttrs]= defineField('itemsCount')
 const [sity, sityAttrs]= defineField('sity')
-const [description, descriptionAttrs]= defineField('description',{value:formData.description})
-const [activity, activityAttrs]= defineField('activity',{value:false})
+const [description, descriptionAttrs]= defineField('description')
+const [activity, activityAttrs]= defineField('activity')
 
 
 
