@@ -3,7 +3,16 @@ import Search from '../Forms/Search.vue';
 import HeaderBasket from '../headerBasket/HeaderBasket.vue';
 import ButtonWhite from '../ui/buttons/ButtonWhite.vue';
 import AddItemForm from './Forms/AddItemForm.vue';
+import { useRouter } from 'vue-router';
 
+const router = useRouter()
+const logOut=()=>{
+  if(localStorage.getItem('bearerToken')){
+    localStorage.removeItem('bearerToken')
+  }
+  router.push({name:'login'})
+
+}
 </script>
 
 <template>
@@ -25,6 +34,7 @@ import AddItemForm from './Forms/AddItemForm.vue';
       <div class=" flex flex-row gap-2">
         <HeaderBasket/>
         <ButtonWhite
+        @click="logOut()"
         title="LogOut"/>
       </div>
       

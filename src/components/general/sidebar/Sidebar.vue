@@ -1,5 +1,4 @@
 <script setup>
-import ToggleTokenConponent from '../../TemporaryFiles/ToggleTokenConponent.vue';
 import SidebarMainLink from './sidebarMainLink.vue';
 import DropDown from './dropDown/DropDown.vue';
 
@@ -43,7 +42,6 @@ import DropDown from './dropDown/DropDown.vue';
 
         </ul>
 
-      <ToggleTokenConponent/>
       </div>
 
     </aside>
