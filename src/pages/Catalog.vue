@@ -25,29 +25,8 @@ import ProductCard from '../components/ProductCard.vue';
 import Loader from '../components/general/Loader.vue';
 import ButtonWhite from '../components/ui/buttons/ButtonWhite.vue';
 import Error from '../components/notification/ErrorNitification.vue'
+import useProductListFetch from '../hooks/useProductListFetch';
 
-const loading=ref(true)
-const productsRef = ref([])
-const error = ref('')
-const errorState = ref(false)
-
-onMounted(async ()=>{
-  try{
-    const response = await fetch('https://fakestoreapi.com/products')
-    errorState.value=false
-    if (!response.ok) {
-      error.value = await response.json().catch(() => ( response.status));
-      throw new Error(error.value || `HTTP error! status: ${response.status}`);
-    }
-
-    productsRef.value = await response.json();
-    loading.value = false
-  }catch(e){
-    error.value = e;
-    console.error('Error fetching data:', e.value);
-    loading.value = false
-    errorState.value=true
-  }
-})
-
+const {loading, productsRef,error,errorState, fetchData } = useProductListFetch()
+onMounted(fetchData)
 </script>
