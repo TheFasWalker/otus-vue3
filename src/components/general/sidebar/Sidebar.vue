@@ -1,8 +1,7 @@
 <script setup>
 import ToggleTokenConponent from '../../TemporaryFiles/ToggleTokenConponent.vue';
-import DropDown from '../../ui/sidebar/DropDown.vue';
 import SidebarMainLink from './sidebarMainLink.vue';
-
+import DropDown from './dropDown/DropDown.vue';
 
 </script>
 
@@ -34,7 +33,11 @@ import SidebarMainLink from './sidebarMainLink.vue';
           </li>
 
           <li>
-          <DropDown/>
+          <DropDown
+          title="DropDown"
+          navName="home"
+          :subLinks="[{ title:'link1',navTo:'home' },{title:'link2',navTo:'about'}]"
+          />
           </li>
 
 
