@@ -54,7 +54,7 @@ import Raiting from '../components/producrCard/Raiting.vue';
 import Loader from '../components/general/Loader.vue';
 import ErrorNitification from '../components/notification/ErrorNitification.vue';
 import { ref, computed, onMounted,watch } from 'vue';
-import { useRoute } from 'vue-router';
+import { onBeforeRouteUpdate, useRoute } from 'vue-router';
 import useProductFetch from '../hooks/useProductFetch';
 const route = useRoute();
 const itemId = computed(() => route.params.itemId);
@@ -67,6 +67,10 @@ const handleErrorClose = () => {
 };
 
 onMounted(fetchData)
+onBeforeRouteUpdate((to, from,next)=>{
+  fetchData()
+  next()
+})
 </script>
 
 
