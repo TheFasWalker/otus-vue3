@@ -6,6 +6,7 @@ import Home from '../pages/Home.vue';
 import ItemPreview from '../pages/ItemPreview.vue';
 import checkToken from '../helpers/checkToken';
 import ErrorPage from '../pages/ErrorPage.vue';
+import Login from '../pages/Login.vue';
 
 const router = createRouter({
     history:createWebHistory(import.meta.env.BASE_URL),
@@ -36,6 +37,11 @@ const router = createRouter({
             ]
         },
         {
+            path:'/login',
+            name:'login',
+            component:Login
+        },
+        {
             path:'/:pathMatch(.*)*',
             name:'not-found',
             component:ErrorPage
@@ -45,9 +51,9 @@ const router = createRouter({
 })
 router.beforeEach((to,from,next)=>{
     const token = (checkToken())
-        if(!token && to.name !=='home' && to.name != 'not-found'){
+        if(!token && to.name !=='login' && to.name != 'not-found'){
             alert('access denied. need bearer token')
-            return next({name:'home'})
+            return next({name:'login'})
         }
         return next()
 })
