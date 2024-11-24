@@ -1,7 +1,7 @@
 <template>
     <ButtonWhite
     title="Добавить товар"
-    @click="popupState = true"/>
+    @click="openPopupCreatingItems"/>
 
     <PopupLauout 
     v-if="popupState"
@@ -89,6 +89,7 @@ import { useForm } from 'vee-validate';
 import {toTypedSchema} from '@vee-validate/yup'
 import * as yup from 'yup'
 import Loader from '../Loader.vue'
+import checkToken from '../../../helpers/checkToken';
 
 
 
@@ -127,6 +128,14 @@ const closePopup=()=>{
         errorData.value = ''
         loading.value=false
     }
+}
+const openPopupCreatingItems =()=>{
+    if(checkToken()){
+        popupState.value = true
+    }else{
+        alert('access denied. need bearer token')
+    }
+    
 }
 
 const formSubmit = handleSubmit(async(values)=>{

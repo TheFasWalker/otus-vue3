@@ -44,8 +44,9 @@ const router = createRouter({
     ]
 })
 router.beforeEach((to,from,next)=>{
-    const token = (checkToken('bearerToken'))
+    const token = (checkToken())
         if(!token && to.name !=='home' && to.name != 'not-found'){
+            alert('access denied. need bearer token')
             return next({name:'home'})
         }
         return next()
