@@ -3,6 +3,7 @@ import {createRouter,createWebHistory} from 'vue-router'
 import About from '../pages/About.vue'
 import Catalog from '../pages/Catalog.vue';
 import Home from '../pages/Home.vue';
+import ItemPreview from '../pages/ItemPreview.vue';
 
 
 const router = createRouter({
@@ -22,6 +23,11 @@ const router = createRouter({
             path:'/catalog',
             name:'catalog',
             component:Catalog
+        },
+        {
+            path:'/catalog/:itemId',
+            name:'itemPage',
+            component:ItemPreview
         }
     ]
 })
