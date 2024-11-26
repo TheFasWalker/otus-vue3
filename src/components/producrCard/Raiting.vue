@@ -19,6 +19,7 @@
 </template>
 <script setup>
 const props =defineProps(['raiting', 'count'])
+
 </script>
 <style>
 </style>

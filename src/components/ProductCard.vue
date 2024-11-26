@@ -6,7 +6,13 @@
           </a>
         </div>
         <div class="pt-6">
-          <a href="#" class="text-lg font-semibold leading-tight text-gray-900 hover:underline dark:text-white max-h-11 overflow-hidden block">{{ props.product.title }}</a>
+          <router-link
+          :to="{name:'itemPage', params:{ itemId:props.product.id}}"
+            class="text-lg font-semibold leading-tight text-gray-900 hover:underline dark:text-white max-h-11 overflow-hidden block"
+          >
+            {{ props.product.title }}
+          </router-link>
+          
 
           <Raiting
           :raiting="props.product.rating.rate"
