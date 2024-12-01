@@ -5,8 +5,8 @@
             <button
                 class=" h-6 w-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-sm border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
                 @click="decrementCount">-</button>
-            <input class=" h-6 w-10 text-sm px-1" type="number" v-model="count" @keyup.enter="updateCountData"
-                @blur="updateCountData">
+            <input class=" h-6 w-10 text-sm px-1" type="number" :value="props.count" @keyup.enter="updateCountData"
+                >
             <button
                 class=" h-6 w-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-sm border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
                 @click="incrementCount">+</button>
@@ -29,12 +29,12 @@
     const store = useStore()
 
     const props = defineProps(['title', 'price', 'count', 'id'])
-    const count = ref(props.count)
-    const emit = defineEmits()
 
-    const updateCountData = () => {
-        emit('update-count', { newCoutn: count, id: props.id })
-    }
+    // const emit = defineEmits()
+
+    // const updateCountData = () => {
+    //     emit('update-count', { newCoutn: count, id: props.id })
+    // }
 
     const incrementCount = () => {
         store.dispatch('incrementItemCount', props.id)

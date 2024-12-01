@@ -71,7 +71,6 @@
     // }
     function clearBasket() {
         // itemsInBasket.splice(0, itemsInBasket.length)
-        console.log('clean')
         store.dispatch('clearBasket')
     }
 

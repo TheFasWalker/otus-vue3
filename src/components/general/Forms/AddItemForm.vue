@@ -148,7 +148,7 @@ const formSubmit = handleSubmit(async(values)=>{
             },
             body: JSON.stringify(values)
             });
-            console.log('sss')
+
         if(response.ok){
             formSendedSucsess.value=true
         }else{

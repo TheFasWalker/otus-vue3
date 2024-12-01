@@ -14,7 +14,6 @@ export default createStore({
         ADD_PRODUCT(state, product){
             state.totalItems++
             const index = state.basketItems.findIndex(existingItem => existingItem.itemId === product.itemId);
-            console.log(index)
             if(index == -1){
                 state.basketItems.push(product)
             }else{
@@ -24,9 +23,7 @@ export default createStore({
         INCREMENT_ITENS_COUNT(state,productId){
             state.totalItems++
             const index = state.basketItems.findIndex(existingItem => existingItem.itemId === productId);
-            if(index == -1){
-                state.basketItems[index].count++
-            }
+                state.basketItems[index]['count']++
         },
         CLEAR_BASKET(state){
             state.totalItems=0
@@ -35,7 +32,6 @@ export default createStore({
         DELETE_ITEM_BY_ID(state,productId){
             const index = state.basketItems.findIndex(existingItem => existingItem.itemId === productId);
             const itemsCount = state.basketItems[index]['count']
-            console.log(itemsCount)
             if( state.totalItems - itemsCount >=0){
                 state.totalItems = state.totalItems - itemsCount 
             }else{
@@ -49,7 +45,6 @@ export default createStore({
                 state.totalItems--
             }
             const index = state.basketItems.findIndex(existingItem => existingItem.itemId === productId);
-            console.log(state.basketItems[index].count)
             if(state.basketItems[index]['count'] >=2){
                 state.basketItems[index]['count']--
             }else{
