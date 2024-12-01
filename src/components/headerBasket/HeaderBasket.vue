@@ -37,7 +37,7 @@
             <div v-if="itemsInBasket.length > 0" class="p-2 flex flex-row justify-between border-t-emerald-100 w-full">
                 <div class="flex flex-col gap-2">
                     <span>ItemsInBasket:{{ store.state.totalItems }}</span>
-                    <!-- <span> totalCost: {{ totalCost }}$ </span> -->
+                    <span> totalCost: {{ store.getters.getTotaBasketCost }}$ </span>
 
                 </div>
                 <ButtonWhite @click="clearBasket" title="cleanBasket" />

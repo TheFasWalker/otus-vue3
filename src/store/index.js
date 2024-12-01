@@ -3,12 +3,14 @@ import { createStore } from "vuex";
 export default createStore({
     state:{
         basketItems:[],
-        totalItems:0
+        totalItems:0,
+        totalCost:0
 
     },
     getters:{
         getBasketItems: state=>state.basketItems,
-        getTotalItemsInBasket :state=>state.totalItems
+        getTotalItemsInBasket :state=>state.totalItems,
+        getTotaBasketCost : state=>state.totalCost
     },
     mutations:{
         ADD_PRODUCT(state, product){
@@ -19,15 +21,18 @@ export default createStore({
             }else{
                 state.basketItems[index].count++
             }
+            state.totalCost = calculateTotalCost(state.basketItems)
         },
         INCREMENT_ITENS_COUNT(state,productId){
             state.totalItems++
             const index = state.basketItems.findIndex(existingItem => existingItem.itemId === productId);
                 state.basketItems[index]['count']++
+                state.totalCost = calculateTotalCost(state.basketItems)
         },
         CLEAR_BASKET(state){
             state.totalItems=0
             state.basketItems = state.basketItems.splice(0,state.basketItems.lenght)
+            state.totalCost = calculateTotalCost(state.basketItems)
         },
         DELETE_ITEM_BY_ID(state,productId){
             const index = state.basketItems.findIndex(existingItem => existingItem.itemId === productId);
@@ -39,6 +44,7 @@ export default createStore({
             }
 
             state.basketItems.splice(index,1)
+            state.totalCost = calculateTotalCost(state.basketItems)
         },
         DECREMENT_ITENS_COUNT(state,productId){
             if(state.totalItems >0){
@@ -50,7 +56,7 @@ export default createStore({
             }else{
                 state.basketItems.splice(index,1)
             }
-
+            state.totalCost = calculateTotalCost(state.basketItems)
                 
             
         },
@@ -70,6 +76,7 @@ export default createStore({
                 state.totalItems = Number(state.totalItems) - Number(state.basketItems[index]['count'])
                 state.basketItems.splice(index,1)
             }
+            state.totalCost = calculateTotalCost(state.basketItems)
 
         }
     },
@@ -95,3 +102,12 @@ export default createStore({
     }
 
 })
+
+function calculateTotalCost(basketItems) {
+    // return basketItems.reduce((sum, item) => sum + Number(item.cost) * Number(item.count), 0);
+    let counter = 0
+    basketItems.forEach(element => {
+        counter = counter + element.count * element.price
+    });
+    return counter;
+}
