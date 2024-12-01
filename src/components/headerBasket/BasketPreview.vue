@@ -24,19 +24,13 @@
     </div>
 </template>
 <script setup>
-    import { ref } from 'vue';
     import{useStore} from 'vuex'
     const store = useStore()
 
     const props = defineProps(['title', 'price', 'count', 'id'])
 
-    // const emit = defineEmits()
-
     const updateCountData = () => {
-        
         const newCount =  event.target.value
-        console.log(newCount)
-        // emit('update-count', { newCoutn: count, id: props.id })
         store.dispatch('changeItemCountByInput', {id:props.id , count:newCount})
     }
 

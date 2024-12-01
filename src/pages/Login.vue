@@ -9,7 +9,7 @@
         v-model="email"
         v-bind="emailAttrs"
         :error="errors.email"
-        palaceholder="Email"/>
+        placeholder="Email"/>
 
         <InputComp
         title="Пароль"
@@ -17,7 +17,7 @@
         v-model="password"
         v-bind="passwordAttrs"
         :error="errors.password"
-        palaceholder="password"/>
+        placeholder="password"/>
 
         <ButtonEl
         class="w-full"

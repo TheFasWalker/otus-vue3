@@ -64,7 +64,6 @@ export default createStore({
             const productId = data.id
             const newCount = data.count
             const index = state.basketItems.findIndex(existingItem => existingItem.itemId === productId);
-            console.log('oldVal= ' +state.basketItems[index]['count'] + '   newVal= ' + newCount )
             if(newCount >0 ){
                 if(newCount > state.basketItems[index]['count']){
                     state.totalItems = Number(state.totalItems) + Number(newCount) - Number(state.basketItems[index]['count'])
@@ -104,7 +103,6 @@ export default createStore({
 })
 
 function calculateTotalCost(basketItems) {
-    // return basketItems.reduce((sum, item) => sum + Number(item.cost) * Number(item.count), 0);
     let counter = 0
     basketItems.forEach(element => {
         counter = counter + element.count * element.price

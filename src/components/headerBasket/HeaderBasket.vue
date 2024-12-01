@@ -46,7 +46,7 @@
     </div>
 </template>
 <script setup>
-    import { computed, reactive, ref } from 'vue'
+    import { computed, ref } from 'vue'
     import ButtonWhite from '../ui/buttons/ButtonWhite.vue';
     import BasketPreview from './BasketPreview.vue';
     import{useStore} from 'vuex'
@@ -66,7 +66,6 @@
     }
 
     function clearBasket() {
-        
         store.dispatch('clearBasket')
     }
 
