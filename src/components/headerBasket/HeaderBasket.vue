@@ -37,7 +37,7 @@
             <div v-if="itemsInBasket.length > 0" class="p-2 flex flex-row justify-between border-t-emerald-100 w-full">
                 <div class="flex flex-col gap-2">
                     <span>ItemsInBasket:{{ store.state.totalItems }}</span>
-                    <span> totalCost: {{ totalCost }}$ </span>
+                    <!-- <span> totalCost: {{ totalCost }}$ </span> -->
 
                 </div>
                 <ButtonWhite @click="clearBasket" title="cleanBasket" />
@@ -60,12 +60,6 @@
 
     const itemsTotalCountInBasket = computed(()=>store.state.totalItems)
     const itemsInBasket = computed(()=>store.state.basketItems)
-    const totalItemsCost = computed(()=>{
-        let totalCost =0
-        itemsInBasket.forEach(element => {
-            totalCost = totalCost + ( element.count * element.cost)
-        });
-    })
     function deleteItem(elemId) {
         const index = itemsInBasket.findIndex((elem) => elem.id == elemId)
         itemsInBasket.splice(index, 1)

@@ -29,7 +29,35 @@ export default createStore({
             }
         },
         CLEAR_BASKET(state){
+            state.totalItems=0
             state.basketItems = state.basketItems.splice(0,state.basketItems.lenght)
+        },
+        DELETE_ITEM_BY_ID(state,productId){
+            const index = state.basketItems.findIndex(existingItem => existingItem.itemId === productId);
+            const itemsCount = state.basketItems[index]['count']
+            console.log(itemsCount)
+            if( state.totalItems - itemsCount >=0){
+                state.totalItems = state.totalItems - itemsCount 
+            }else{
+                state.totalItems = 0
+            }
+
+            state.basketItems.splice(index,1)
+        },
+        DECREMENT_ITENS_COUNT(state,productId){
+            if(state.totalItems >0){
+                state.totalItems--
+            }
+            const index = state.basketItems.findIndex(existingItem => existingItem.itemId === productId);
+            console.log(state.basketItems[index].count)
+            if(state.basketItems[index]['count'] >=2){
+                state.basketItems[index]['count']--
+            }else{
+                state.basketItems.splice(index,1)
+            }
+
+                
+            
         }
     },
     actions:{
@@ -39,8 +67,14 @@ export default createStore({
         incrementItemCount({commit},id){
             commit('INCREMENT_ITENS_COUNT', id)
         },
+        decrementItemCount({commit},id){
+            commit('DECREMENT_ITENS_COUNT', id)
+        },
         clearBasket({commit}){
             commit('CLEAR_BASKET')
+        },
+        deleteItemById({commit},id){
+            commit('DELETE_ITEM_BY_ID', id)
         }
     }
 
