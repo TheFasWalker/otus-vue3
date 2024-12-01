@@ -53,6 +53,24 @@ export default createStore({
 
                 
             
+        },
+        CHANGE_ITEMS_COUNT(state, data){
+            const productId = data.id
+            const newCount = data.count
+            const index = state.basketItems.findIndex(existingItem => existingItem.itemId === productId);
+            console.log('oldVal= ' +state.basketItems[index]['count'] + '   newVal= ' + newCount )
+            if(newCount >0 ){
+                if(newCount > state.basketItems[index]['count']){
+                    state.totalItems = Number(state.totalItems) + Number(newCount) - Number(state.basketItems[index]['count'])
+                }else if(newCount < state.basketItems[index]['count'] ){
+                    state.totalItems = Number(state.totalItems) - Number(state.basketItems[index]['count']) - Number(newCount)
+                }
+                state.basketItems[index]['count']= newCount
+            }else{
+                state.totalItems = Number(state.totalItems) - Number(state.basketItems[index]['count'])
+                state.basketItems.splice(index,1)
+            }
+
         }
     },
     actions:{
@@ -70,6 +88,9 @@ export default createStore({
         },
         deleteItemById({commit},id){
             commit('DELETE_ITEM_BY_ID', id)
+        },
+        changeItemCountByInput({commit},data){
+            commit('CHANGE_ITEMS_COUNT',data)
         }
     }
 

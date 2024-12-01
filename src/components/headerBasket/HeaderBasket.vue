@@ -63,14 +63,10 @@
     function deleteItem(elemId) {
         const index = itemsInBasket.findIndex((elem) => elem.id == elemId)
         itemsInBasket.splice(index, 1)
-
     }
-    // function updateCount(event) {
-    //     const changingItem = itemsInBasket.find((item) => item.id == event.id)
-    //     changingItem.count = event.newCoutn
-    // }
+
     function clearBasket() {
-        // itemsInBasket.splice(0, itemsInBasket.length)
+        
         store.dispatch('clearBasket')
     }
 

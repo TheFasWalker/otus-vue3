@@ -32,9 +32,13 @@
 
     // const emit = defineEmits()
 
-    // const updateCountData = () => {
-    //     emit('update-count', { newCoutn: count, id: props.id })
-    // }
+    const updateCountData = () => {
+        
+        const newCount =  event.target.value
+        console.log(newCount)
+        // emit('update-count', { newCoutn: count, id: props.id })
+        store.dispatch('changeItemCountByInput', {id:props.id , count:newCount})
+    }
 
     const incrementCount = () => {
         store.dispatch('incrementItemCount', props.id)
