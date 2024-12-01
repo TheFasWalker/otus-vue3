@@ -7,7 +7,7 @@
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M9 10V6a3 3 0 0 1 3-3v0a3 3 0 0 1 3 3v4m3-2 .917 11.923A1 1 0 0 1 17.92 21H6.08a1 1 0 0 1-.997-1.077L6 8h12Z" />
             </svg>
-            <span v-if="store.state.totalItems" class=" absolute top-0.5 right-0.5 block bg-slate-500 w-fit h-fit p-0.5 rounded text-white text-xs font-bold"> {{ store.state.totalItems }}</span>
+            <span v-if="store.state.basket.totalItems" class=" absolute top-0.5 right-0.5 block bg-slate-500 w-fit h-fit p-0.5 rounded text-white text-xs font-bold"> {{ store.state.basket.totalItems }}</span>
            
         </button>
         <div v-if="showBasketState" class=" absolute rounded-lg shadow  bg-white  w-[550px] right-0 top-full ">
@@ -36,8 +36,8 @@
 
             <div v-if="itemsInBasket.length > 0" class="p-2 flex flex-row justify-between border-t-emerald-100 w-full">
                 <div class="flex flex-col gap-2">
-                    <span>ItemsInBasket:{{ store.state.totalItems }}</span>
-                    <span> totalCost: {{ store.getters.getTotaBasketCost }}$ </span>
+                    <span>ItemsInBasket:{{ store.state.basket.totalItems }}</span>
+                    <span> totalCost: {{ store.state.basket.totalCost }}$ </span>
 
                 </div>
                 <ButtonWhite @click="clearBasket" title="cleanBasket" />
@@ -58,8 +58,8 @@
         showBasketState.value = !showBasketState.value
     }
 
-    const itemsTotalCountInBasket = computed(()=>store.state.totalItems)
-    const itemsInBasket = computed(()=>store.state.basketItems)
+    const itemsTotalCountInBasket = computed(()=>store.state.basket.totalItems)
+    const itemsInBasket = computed(()=>store.state.basket.basketItems)
     function deleteItem(elemId) {
         const index = itemsInBasket.findIndex((elem) => elem.id == elemId)
         itemsInBasket.splice(index, 1)

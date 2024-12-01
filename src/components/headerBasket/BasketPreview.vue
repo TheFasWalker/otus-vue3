@@ -31,17 +31,17 @@
 
     const updateCountData = () => {
         const newCount =  event.target.value
-        store.dispatch('changeItemCountByInput', {id:props.id , count:newCount})
+        store.dispatch('basket/changeItemCountByInput', {id:props.id , count:newCount})
     }
 
     const incrementCount = () => {
-        store.dispatch('incrementItemCount', props.id)
+        store.dispatch('basket/incrementItemCount', props.id)
     };
     const decrementCount = () => {
-        store.dispatch('decrementItemCount', props.id)
+        store.dispatch('basket/decrementItemCount', props.id)
     };
     const deleteItem =()=>{
-        store.dispatch('deleteItemById',props.id)
+        store.dispatch('basket/deleteItemById',props.id)
     }
 
 </script>

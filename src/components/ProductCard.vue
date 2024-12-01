@@ -38,7 +38,7 @@
   const store = useStore()
 
   function addToCart(){
-    store.dispatch('addProductToBasket', {
+    store.dispatch('basket/addProductToBasket', {
       title:props.product.title,
       count:1,
       itemId:props.product.id,
@@ -46,7 +46,7 @@
     })
   }
   function incrementItemCount(id){
-    store.dispatch('incrementItemCount',id)
+    store.dispatch('basket/incrementItemCount',id)
   }
   const props = defineProps({
     product: {
