@@ -34,7 +34,9 @@ import InputComp from '../components/ui/formItems/InputComp.vue';
 import {useForm} from 'vee-validate'
 import * as yup from 'yup'
 import {useRouter} from 'vue-router'
+import { useStore } from 'vuex';
 
+const store = useStore()
 
 const schema = toTypedSchema(yup.object({
     email:yup.string().email('Невалидный email').required('Обязательное поле'),
@@ -53,6 +55,8 @@ const [password, passwordAttrs]= defineField('password')
 
 const formSubmit=handleSubmit(()=>{
     localStorage.setItem('bearerToken','asdfaaasdfaaasdfasdfasdfaa')
+    console.log(email.value)
+    store.dispatch('user/userLogIn',email.value )
     router.push({ name: 'home' });
 })
 </script>

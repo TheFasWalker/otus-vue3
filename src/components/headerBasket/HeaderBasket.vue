@@ -53,7 +53,7 @@
 
     const store = useStore()
     
-    const showBasketState = ref(true)
+    const showBasketState = ref(false)
     const toggleBasket = () => {
         showBasketState.value = !showBasketState.value
     }
