@@ -4,13 +4,16 @@ import HeaderBasket from '../headerBasket/HeaderBasket.vue';
 import ButtonWhite from '../ui/buttons/ButtonWhite.vue';
 import AddItemForm from './Forms/AddItemForm.vue';
 import { useRouter } from 'vue-router';
+import{useStore} from 'vuex'
 
 const router = useRouter()
+const store = useStore()
 const logOut=()=>{
   if(localStorage.getItem('bearerToken')){
     localStorage.removeItem('bearerToken')
   }
   router.push({name:'login'})
+  store.dispatch('user/userLogOut')
 
 }
 </script>
@@ -31,8 +34,10 @@ const logOut=()=>{
         <Search/>
         <AddItemForm/>
       </div>
-      <div class=" flex flex-row gap-2">
-        <HeaderBasket/>
+      
+      <div v-if="store.state.user.email"  class=" flex flex-row gap-2 items-center">
+        <span >userEmail: {{ store.state.user.email }}</span>
+        <HeaderBasket />
         <ButtonWhite
         @click="logOut()"
         title="LogOut"/>

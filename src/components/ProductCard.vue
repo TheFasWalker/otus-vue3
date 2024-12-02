@@ -23,6 +23,7 @@
           <div class="mt-4 flex items-center justify-between gap-4">
             <p class="text-2xl font-extrabold leading-tight text-gray-900 dark:text-white">${{ props.product.price }}</p>
             <ButtonEl
+            @click="addToCart()"
             title="В корзину"/>
           </div>
         </div>
@@ -32,6 +33,21 @@
 <script setup>
   import Raiting from './producrCard/Raiting.vue';
   import ButtonEl from './ui/ButtonEl.vue';
+  import{useStore} from 'vuex'
+
+  const store = useStore()
+
+  function addToCart(){
+    store.dispatch('basket/addProductToBasket', {
+      title:props.product.title,
+      count:1,
+      itemId:props.product.id,
+      price: props.product.price
+    })
+  }
+  function incrementItemCount(id){
+    store.dispatch('basket/incrementItemCount',id)
+  }
   const props = defineProps({
     product: {
       type: Object,

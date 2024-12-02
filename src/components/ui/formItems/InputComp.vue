@@ -13,7 +13,7 @@
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full  p-2.5 "
         :class="{ 'border-red-600': props.error }"
         :type=props.type 
-        :placeholder="props.palaceholder"
+        :placeholder="props.placeholder"
         :value="props.modelValue"
         :name="props.name"
         @input="$emit('update:modelValue',$event.target.value)"
@@ -23,6 +23,6 @@
     </label>
 </template>
 <script setup>
-    const props= defineProps([ 'modelValue','title','name','val','type','palaceholder','error','errorMessage'])
+    const props= defineProps([ 'modelValue','title','name','val','type','placeholder','error','errorMessage'])
 
 </script>

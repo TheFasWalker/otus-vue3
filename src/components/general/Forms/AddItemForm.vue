@@ -19,7 +19,7 @@
                 <InputComp
                     title="Название"
                     type="text"
-                    palaceholder="placeholder"
+                    placeholder="placeholder"
                     v-model.trim="itemName"
                     v-bind="itemNameAttrs"
                     name="itemName"
@@ -30,7 +30,7 @@
                 <InputComp
                     title="Количество"
                     type="number"
-                    palaceholder="itemsCount"
+                    placeholder="itemsCount"
                     v-bind="itemsCountAttrs"
                     v-model.trim="itemsCount"
                     name="itemCount"
@@ -40,11 +40,11 @@
 
                 <DropDownSelect
                     title="Страна производитель"
-                    name="sity"
+                    name="city"
                     :dataElems="dropDownData"
-                    v-model="sity"
-                    v-bind="sityAttrs"
-                    :error="errors.sity"
+                    v-model="city"
+                    v-bind="cityAttrs"
+                    :error="errors.city"
                 />
 
                 <TextAreaComp
@@ -103,7 +103,7 @@ const errorData = ref('')
 const schema = toTypedSchema(yup.object({
     itemName:yup.string().required('Обязательное поле').min(3,'Минимум 3 символа'),
     itemsCount:yup.number().required('укажите количемство'),
-    sity:yup.string().required('Укажите страну'),
+    city:yup.string().required('Укажите страну'),
     description:yup.string().nullable(),
     activity: yup.mixed().oneOf([true, false, null, undefined]),
 }))
@@ -115,7 +115,7 @@ const {errors,defineField, handleSubmit,resetForm}=useForm({
 })
 const [itemName, itemNameAttrs]= defineField('itemName')
 const [itemsCount, itemsCountAttrs]= defineField('itemsCount')
-const [sity, sityAttrs]= defineField('sity')
+const [city, cityAttrs]= defineField('city')
 const [description, descriptionAttrs]= defineField('description')
 const [activity, activityAttrs]= defineField('activity')
 
@@ -148,7 +148,7 @@ const formSubmit = handleSubmit(async(values)=>{
             },
             body: JSON.stringify(values)
             });
-            console.log('sss')
+
         if(response.ok){
             formSendedSucsess.value=true
         }else{

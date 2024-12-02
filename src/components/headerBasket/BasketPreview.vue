@@ -5,14 +5,14 @@
             <button
                 class=" h-6 w-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-sm border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
                 @click="decrementCount">-</button>
-            <input class=" h-6 w-10 text-sm px-1" type="number" v-model="count" @keyup.enter="updateCountData"
-                @blur="updateCountData">
+            <input class=" h-6 w-10 text-sm px-1" type="number" :value="props.count" @keyup.enter="updateCountData"
+                >
             <button
                 class=" h-6 w-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-sm border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
                 @click="incrementCount">+</button>
         </div>
-        <span class="flex items-center justify-center">{{ count * props.price }} $</span>
-        <button @click="$emit('delete-item')"
+        <span class="flex items-center justify-center">{{  count * props.price }} $</span>
+        <button @click="deleteItem()"
             class=" w-fit h-fit text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
             <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                 width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -24,26 +24,25 @@
     </div>
 </template>
 <script setup>
-    import { ref } from 'vue';
+    import{useStore} from 'vuex'
+    const store = useStore()
+
     const props = defineProps(['title', 'price', 'count', 'id'])
-    const count = ref(props.count)
-    const emit = defineEmits()
+
     const updateCountData = () => {
-        emit('update-count', { newCoutn: count, id: props.id })
+        const newCount =  event.target.value
+        store.dispatch('basket/changeItemCountByInput', {id:props.id , count:newCount})
     }
 
     const incrementCount = () => {
-        count.value++;
-        emit('update-count', { newCoutn: count.value, id: props.id });
+        store.dispatch('basket/incrementItemCount', props.id)
     };
     const decrementCount = () => {
-        if (count.value > 1) {
-            count.value--;
-            emit('update-count', { newCoutn: count.value, id: props.id });
-        } else (
-            emit('delete-item')
-        )
+        store.dispatch('basket/decrementItemCount', props.id)
     };
+    const deleteItem =()=>{
+        store.dispatch('basket/deleteItemById',props.id)
+    }
 
 </script>
 <style lang="css" scoped>
