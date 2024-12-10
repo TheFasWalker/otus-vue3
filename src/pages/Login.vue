@@ -9,6 +9,8 @@
         v-model="email"
         v-bind="emailAttrs"
         :error="errors.email"
+        testid="email-error"
+         
         palaceholder="Email"/>
 
         <InputComp
@@ -17,6 +19,7 @@
         v-model="password"
         v-bind="passwordAttrs"
         :error="errors.password"
+        testid="password-error"
         palaceholder="password"/>
 
         <ButtonEl

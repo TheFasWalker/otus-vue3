@@ -4,7 +4,7 @@
         :class="{'flex flex-row justify-between items-center': props.error }"
         >
             <span class="block mb-2 text-lg font-bold text-gray-900" >{{ props.title }}</span>
-            <p class="text-red-600 text-sm font-bold" v-if="props.error">
+            <p class="text-red-600 text-sm font-bold" v-if="props.error" :data-testid="props.testid" >
                 {{ props.error }}
             </p>
         </div>
@@ -23,6 +23,6 @@
     </label>
 </template>
 <script setup>
-    const props= defineProps([ 'modelValue','title','name','val','type','palaceholder','error','errorMessage'])
 
+    const props= defineProps([ 'modelValue','title','name','val','type','palaceholder','error','errorMessage','testid'])
 </script>
